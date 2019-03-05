@@ -1,0 +1,38 @@
+<div class="d-flex align-items-center">
+    <h1>アクティビティ一覧</h1>
+    <div class="ml-auto posts_button">
+        <%= link_to '投稿', new_activity_path, class: "btn btn-outline-info" %>
+    </div>
+</div>
+    
+    <table class= "table table-bordered border-primary table-hover table-sm posts_table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" style="width: 40px">No.</th>
+                <th scope="col" style="width: 400px">タイトル</th>
+                <th scope="col">拠点名</th>
+                <th scope="col">投稿日</th>
+                <th scope="col">更新日時</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @activities.each do |activity| %>
+            <tr>
+                <td><%= activity.id %></td>
+                <td><%= link_to activity.title ,activity_path(activity) %></td>
+                <td><%= activity.branch_name %></td>
+                <td><%= activity.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+                <td><%= activity.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
+                <td><%= link_to '詳細', activity_path(activity), class: 'btn btn-outline-info' %></td>
+                <td><%= link_to '削除', activity_path(activity), class: 'btn btn-outline-info', method: :delete,data:
+                {confirm: "投稿記事を削除しますか？", 
+                 cancel: "キャンセル", 
+                 commit: "削除する", title: "削除の確認"} %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    
+    <%= paginate @activities %>

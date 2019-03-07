@@ -5,14 +5,18 @@
     </div>
 </div>
 <div class="card">
-  <div class="card-header bg-info text-white">
-      <h4><%= @activity.title %></h4>
-  </div>
-  <img class="card-img-top" src="<%= @activity.img %>"  alt="画像">
-  <div class="card-body">
-      <p class="card-text"><%= simple_format(@activity.content) %></p>
-  </div>
-  <div class="card-footer">
-      <p class="text-right font-weight-bold mr-10"><%= @activity.branch_name %></p>
-  </div>
+    <div class="card-header bg-info text-white">
+        <h4><%= @activity.title %></h4>
+    </div>
+    <% if @activity.img? %>
+        <%= image_tag @activity.img.url %>
+    <% else %>
+        <%= image_tag 'no_image.jpg', alt: '画像', class: 'card-img-top' %>
+    <% end %>
+    <div class="card-body">
+        <p class="card-text"><%= simple_format(@activity.content) %></p>
+    </div>
+    <div class="card-footer">
+        <p class="text-right font-weight-bold mr-10"><%= @activity.branch_name %></p>
+    </div>
 </div>

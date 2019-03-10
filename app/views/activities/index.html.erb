@@ -23,8 +23,8 @@
                 <td><%= activity.id %></td>
                 <td><%= link_to activity.title ,activity_path(activity) %></td>
                 <td><%= activity.branch_name %></td>
-                <td><%= activity.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-                <td><%= activity.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
+                <td><%= activity.created_at.to_s(:datetime_base) %></td>
+                <td><%= activity.updated_at.to_s(:datetime_base) %></td>
                 <td><%= link_to '詳細', activity_path(activity), class: 'btn btn-outline-info' %></td>
                 <td><%= link_to '削除', activity_path(activity), class: 'btn btn-outline-info', method: :delete,data:
                 {confirm: "投稿記事を削除しますか？", 

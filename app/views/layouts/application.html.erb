@@ -11,18 +11,6 @@
 
   <body>
     <div class="container">
-      <% if flash[:notice] %>
-        <div class="alert alert-primary"><%= flash[:notice] %></div>
-      <% end %>
-      <% if flash[:alert] %>
-        <div class="alert alert-danger">
-          <ul>
-            <% flash[:alert].each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
       <%= yield %>
     </div>
   </body>

@@ -21,16 +21,16 @@ class ActivitiesController < ApplicationController
     if @activity.save
       redirect_to root_path, notice:"「#{@activity.title}」が投稿されました！"
     else
-      flash[:alert] = @activity.errors.full_messages
+      flash[:error_messages] = @activity.errors.full_messages
       render:new
     end
   end
   
   def update
     if @activity.update(activity_params)
-      redirect_to root_path, notice:"「#{@activity.title}」が修正されました！"
+      redirect_to activity_path, notice:"「#{@activity.title}」が修正されました！"
     else
-      flash[:alert] = @activity.errors.full_messages
+      flash[:error_messages] = @activity.errors.full_messages
       render:edit
     end
   end

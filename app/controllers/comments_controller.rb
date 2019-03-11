@@ -5,10 +5,8 @@ class CommentsController < ApplicationController
       flash[:notice] = 'コメントを投稿しました'
       redirect_to comment.activity
     else
-      reirect_to :back, flash:{
-        comment: comment,
-        error_messages: comment.errors.full_messages
-      }
+      redirect_back(fallback_location: root_path)
+      flash[:error_messages] = comment.errors.full_messages
     end
   end
 

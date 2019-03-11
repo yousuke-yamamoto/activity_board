@@ -4,26 +4,11 @@
         <%= link_to '編集', edit_activity_path(@activity), class: "btn btn-outline-info" %>
     </div>
 </div>
-<div class="card">
-    <div class="card-header bg-info text-white">
-        <h4><%= @activity.title %></h4>
-    </div>
-    <% if @activity.img? %>
-        <%= image_tag @activity.img.url %>
-    <% else %>
-        <%= image_tag 'no_image.jpg', alt: '画像', class: 'card-img-top' %>
-    <% end %>
-    <div class="card-body">
-        <p class="card-text"><%= simple_format(@activity.content) %></p>
-    </div>
-    <div class="card-footer">
-        <p class="text-right font-weight-bold mr-10"><%= @activity.branch_name %></p>
-    </div>
-</div>
+<% if flash[:notice] %>
+    <div class="alert alert-primary"><%= flash[:notice] %></div>
+<% end %>
 
-    <% if flash[:notice] %>
-        <div class="alert alert-primary"><%= flash[:notice] %></div>
-    <% end %>
+<%= render @activity %>
 
 <div class="p-comment_list">
     <div class="p-comment_listTitle">コメント</div>

@@ -1,3 +1,5 @@
+<%= render 'shared/error_messages' %>
+
 <%= form_with model:@activity,local:true do |f| %>
     <div class="form-group">
         <%= f.label :branch_name, '拠点名' %>

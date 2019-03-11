@@ -11,6 +11,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @activity = Activity.find(params[:activity_id])
+    @comment = @activity.comments.find(params[:id])
+    @comment.destroy    
+    redirect_to activity_path(@activity), flash:{ notice: 'コメントが削除されました'}
   end
   
   private

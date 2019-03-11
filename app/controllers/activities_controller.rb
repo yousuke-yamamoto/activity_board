@@ -35,7 +35,6 @@ class ActivitiesController < ApplicationController
     end
   end
   
-  
   def destroy
     @activity.destroy
     redirect_to root_path, notice:"「#{@activity.title}」が削除されました！"
